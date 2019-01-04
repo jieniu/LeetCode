@@ -14,6 +14,7 @@ Example:
 """
 class Solution(object):
     def __init__(self):
+        # python 中的 dict 是用 hash table 实现的
         self.differences = {}
 
     def twoSum(self, nums, target):
