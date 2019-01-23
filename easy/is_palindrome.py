@@ -20,25 +20,25 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 """
 
 class Solution(object):
-	def isPalindrome(self, x):
-		"""
-		:type x: int
-		:rtype: bool
-		"""
-		if x < 0:
-			return False
+    def isPalindrome(self, x):
+        """
+        :type x: int
+                :rtype: bool
+        """
+        if x < 0:
+            return False
 
-		strx = str(x)
-		begin = 0
-		end = len(strx) - 1
+        strx = str(x)
+        begin = 0
+        end = len(strx) - 1
 
-		while begin < end:
-			if strx[begin] != strx[end]:
-				return False
-			begin += 1
-			end -= 1
+        while begin < end:
+            if strx[begin] != strx[end]:
+                return False
+            begin += 1
+            end -= 1
 
-		return True
+            return True
 
 solution = Solution()
 print solution.isPalindrome(10)
