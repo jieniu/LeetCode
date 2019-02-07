@@ -40,11 +40,11 @@ class Solution(object):
             elif index == numRows - 1:
                 sign = -1
             if len(zigzag_array) < index + 1:
-                zigzag_array.append([])
+                zigzag_array.append("")
 
-            zigzag_array[index].append(c)
+            zigzag_array[index] += c
             index += sign
-        return "".join(["".join(x) for x in zigzag_array])
+        return "".join(zigzag_array)
 
 s = Solution()
 print s.convert("PAYPALISHIRING", 3)
