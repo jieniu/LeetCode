@@ -20,34 +20,23 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        ret = None
-        curr = None
-        while l1 is not None or l2 is not None:
-            val = None
-            if l1 is not None and l2 is not None:
-                if l1.val < l2.val:
-                    val = l1.val
-                    l1 = l1.next
-                else:
-                    val = l2.val
-                    l2 = l2.next
-
-            elif l1 is not None:
-                val = l1.val
+        ret = curr = ListNode(0)
+        while l1 and l2:
+            if l1.val < l2.val:
+                curr.next = l1
                 l1 = l1.next
-
             else:
-                val = l2.val
+                curr.next = l2
                 l2 = l2.next
 
-            if curr is None:
-                curr = ListNode(val)
-                ret = curr
-            else:
-                curr.next = ListNode(val)
-                curr = curr.next
+            curr = curr.next
+        if l1:
+            curr.next = l1
+        elif l2:
+            curr.next = l2
 
-        return ret
+        return ret.next
+
 
 l1 = ListNode(1)
 l1.next = ListNode(1)
