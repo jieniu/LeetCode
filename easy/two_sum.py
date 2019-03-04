@@ -13,26 +13,11 @@ Example:
     return [0, 1].
 """
 class Solution(object):
-    def __init__(self):
-        # python 中的 dict 是用 hash table 实现的
-        self.differences = {}
-
     def twoSum(self, nums, target):
-        index = 0
-        for number in nums:
-            if number in self.differences:
-                begin_index = self.differences[number]
-                end_index = index
-                return [begin_index, end_index]
-            else:
-                difference = target - number
-                if difference in self.differences:
-                    index += 1
-                    continue
-                self.differences[difference] = index
-
-            index += 1
-        return None
-
+        complements = {}
+        for i, x in enumerate(nums):
+            if target - x in complements:
+                return [complements[target - x], i]
+            complements[x] = i
 s = Solution()
 print s.twoSum([2,7,11,15], 9)
