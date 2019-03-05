@@ -12,43 +12,34 @@ class Solution(object):
         :rtype: ListNode
         """
         carry = 0
-        ret = None
-        last = None
-        while l1 is not None:
-            l1_val = l1.val
+        ret = last = ListNode(0)
+        ret.next = last.next = l1
+        while l1 and l2:
+            val = l1.val + l2.val + carry
+            carry = val / 10
+            val = val % 10
+            l1.val = val
+            
+            l2 = l2.next
+            last = l1
             l1 = l1.next
 
-            l2_val = 0
-            if l2 is not None:
-                l2_val = l2.val
-                l2 = l2.next
+        if l2:
+            last.next = l2
 
-            val = l1_val + l2_val + carry
+        l1 = last.next
+
+        while l1:
+            val = l1.val + carry
             carry = val / 10
-            val = val % 10
-
-            if ret is None:
-                last = ListNode(val)
-                ret = last
-            else:
-                last.next = ListNode(val)
-                last = last.next
-
-
-        while l2 is not None:
-            l2_val = l2.val
-            l2 = l2.next
-            
-            val = l2_val + carry
-            carry = val / 10
-            val = val % 10
-            last.next = ListNode(val)
-            last = last.next
+            l1.val = val % 10
+            last = l1
+            l1 = l1.next
 
         if carry == 1:
             last.next = ListNode(carry)
 
-        return ret
+        return ret.next
 
 def printRet(ret):
     while ret is not None:
