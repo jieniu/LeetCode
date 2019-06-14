@@ -24,6 +24,9 @@ class Solution(object):
         :type words: List[str]
         :rtype: List[int]
         """
+        if len(s) == 0 or len(words) == 0:
+            return []
+
         word_count = {}
         for word in words:
             word_count[word] = word_count.get(word, 0) + 1
