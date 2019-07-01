@@ -8,25 +8,17 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        if (x < 0 || (x >= 10 && x % 10 == 0)) {
+        if (x < 0 || (x > 0 && x % 10 == 0)) {
             return false;
         }
-        if (x < 10) {
-            return true;
+        
+        int num = 0;
+        while (num < x) {
+            num = num * 10 + x % 10;
+            x = x / 10;
         }
         
-        int last_reverse = 0;
-        int reverse = 0;
-        int left = x;
-        while (reverse < left) {
-            int remainder = left % 10;
-            left = left / 10;
-            
-            last_reverse = reverse;
-            reverse = reverse * 10 + remainder;
-        }
-        
-        if (reverse == left || last_reverse == left) {
+        if (x == num || num / 10 == x) {
             return true;
         }
           
