@@ -14,6 +14,7 @@ class Solution(object):
             idx -= 1
         
         if carry:
-            digits = [carry] + digits
+            digits = [0]*(len(digits)+1)
+            digits[0] = 1
         return digits
 
