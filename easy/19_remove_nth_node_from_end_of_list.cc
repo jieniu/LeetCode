@@ -15,19 +15,19 @@ public:
         dummy->next = head;
         ListNode *fast = dummy;
         ListNode *slow = dummy;
-        ListNode *pre = slow;
 
-        for (int i = 0; i < n; i++) {
+        n++;
+        while (n-- && fast != NULL) {
             fast = fast->next;
         }
         while (fast) {
-            pre = slow;
             fast = fast->next;
             slow = slow->next;
         }
 
-        pre->next = slow->next;
-        delete slow;
+        ListNode *tmp = slow->next;
+        slow->next = slow->next->next;
+        delete tmp;
         head = dummy->next;
         delete dummy;
         return head;
